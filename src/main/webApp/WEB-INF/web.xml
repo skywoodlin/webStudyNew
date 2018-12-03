@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+    <context-param>
+        <param-name>xjlintest</param-name>
+        <param-value>333</param-value>
+    </context-param>
+    <session-config>
+        <!--分钟作为单位， 默认是30分钟-->
+        <session-timeout>10</session-timeout>
+    </session-config>
+    <!--<error-page>-->
+    <!--<error-code>500</error-code>-->
+    <!--<location>/error/500.jsp</location>-->
+    <!--</error-page>-->
+    <error-page>
+        <error-code>404</error-code>
+        <location>/error/404.jsp</location>
+    </error-page>
+    <!--    <servlet>
+            <servlet-name>OutServlet</servlet-name>
+            <servlet-class>com.xjlin.response.OutServlet</servlet-class>
+            <load-on-startup>1</load-on-startup>
+        </servlet>
+
+        <servlet-mapping>
+            <servlet-name>OutServlet</servlet-name>
+            <url-pattern>/servlet/OutServlet</url-pattern>
+        </servlet-mapping>-->
+    <!--文件上传相关-->
+    <servlet>
+        <servlet-name>UploadServlet</servlet-name>
+        <servlet-class>com.xjlin.web.UploadServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DownServlet_new</servlet-name>
+        <servlet-class>com.xjlin.web.DownServlet</servlet-class>
+    </servlet>
+
+
+    <servlet-mapping>
+        <servlet-name>UploadServlet</servlet-name>
+        <url-pattern>/servlet/UploadServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DownServlet_new</servlet-name>
+        <url-pattern>/servlet/DownServlet_new</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>Demo1Servlet</servlet-name>
+        <servlet-class>com.xjlin.web.Demo1Servlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Demo2Servlet</servlet-name>
+        <servlet-class>com.xjlin.web.Demo2Servlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Demo3Servlet</servlet-name>
+        <servlet-class>com.xjlin.web.Demo3Servlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Demo4Servlet</servlet-name>
+        <servlet-class>com.xjlin.web.Demo4Servlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Demo5Servlet</servlet-name>
+        <servlet-class>com.xjlin.web.Demo5Servlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Demo1Servlet</servlet-name>
+        <url-pattern>/servlet/Demo1Servlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Demo2Servlet</servlet-name>
+        <url-pattern>/servlet/Demo2Servlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Demo3Servlet</servlet-name>
+        <url-pattern>/servlet/Demo3Servlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Demo4Servlet</servlet-name>
+        <url-pattern>/servlet/Demo4Servlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Demo5Servlet</servlet-name>
+        <url-pattern>/servlet/Demo5Servlet</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>DataSourceInitServlet</servlet-name>
+        <servlet-class>com.xjlin.init.DataSourceInitServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DataSourceInitServlet</servlet-name>
+        <url-pattern>/servlet/DataSourceInitServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>SConfigServlet</servlet-name>
+        <servlet-class>com.xjlin.basic.SConfigServlet</servlet-class>
+        <init-param>
+            <param-name>name1</param-name>
+            <param-value>xjlin</param-value>
+        </init-param>
+        <!--<load-on-startup>1</load-on-startup>-->
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SConfigServlet</servlet-name>
+        <url-pattern>/servlet/SConfigServlet</url-pattern>
+    </servlet-mapping>
+    <!--<filter>-->
+    <!--<filter-name>Set Character Encoding</filter-name>-->
+    <!--<filter-class>org.apache.catalina.filters.SetCharacterEncodingFilter</filter-class>-->
+    <!--<init-param>-->
+    <!--<param-name>encoding</param-name>-->
+    <!--<param-value>UTF-8</param-value>-->
+    <!--</init-param>-->
+    <!--</filter>-->
+    <!--<filter-mapping>-->
+    <!--<filter-name>Set Character Encoding</filter-name>-->
+    <!--<url-pattern>/*</url-pattern>-->
+    <!--</filter-mapping>-->
+
+    <filter>
+        <description>全站乱码过滤器</description>
+        <filter-name>encodeFilter</filter-name>
+        <filter-class>com.xjlin.filter.EncodingFilter</filter-class>
+        <init-param>
+            <param-name>encode</param-name>
+            <param-value>utf-8</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>encodeFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <description>testFilter</description>
+        <filter-name>testFilter</filter-name>
+        <filter-class>com.xjlin.filter.Demo1Filter</filter-class>
+        <init-param>
+            <param-name>filterParam1</param-name>
+            <param-value>filterparam1</param-value>
+        </init-param>
+        <init-param>
+            <param-name>filterParam2</param-name>
+            <param-value>filterparam2</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>testFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher> <!--不写默认是这个-->
+        <dispatcher>FORWARD</dispatcher>
+        <dispatcher>INCLUDE</dispatcher>
+        <dispatcher>ERROR</dispatcher>
+    </filter-mapping>
+
+    <!--<listener>-->
+    <!--<listener-class>com.xjlin.listener.MySCListener</listener-class>-->
+    <!--</listener>-->
+    <!--<listener>-->
+    <!--<listener-class>com.xjlin.listener.MyHSesssionListener</listener-class>-->
+    <!--</listener>-->
+
+    <!--<listener>-->
+    <!--<listener-class>com.xjlin.listener.MySRequestListener</listener-class>-->
+    <!--</listener>-->
+    <listener>
+        <listener-class>com.xjlin.listener.MySCListener_forKick</listener-class>
+    </listener>
+
+    <!--<listener>-->
+        <!--<listener-class>com.xjlin.listener.MySCAttrListener</listener-class>-->
+    <!--</listener>-->
+
+    <servlet>
+        <servlet-name>AddCustServlet</servlet-name>
+        <servlet-class>com.xjlin.web.AddCustServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListCustServlet</servlet-name>
+        <servlet-class>com.xjlin.web.ListCustServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CustInfoServlet</servlet-name>
+        <servlet-class>com.xjlin.web.CustInfoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateCustServlet</servlet-name>
+        <servlet-class>com.xjlin.web.UpdateCustServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DelCustServlet</servlet-name>
+        <servlet-class>com.xjlin.web.DelCustServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>BatchDelServlet</servlet-name>
+        <servlet-class>com.xjlin.web.BatchDelServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>FindCustByCondServlet</servlet-name>
+        <servlet-class>com.xjlin.web.FindCustByCondServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PageCustServlet</servlet-name>
+        <servlet-class>com.xjlin.web.PageCustServlet</servlet-class>
+    </servlet>
+
+
+    <servlet-mapping>
+        <servlet-name>AddCustServlet</servlet-name>
+        <url-pattern>/servlet/AddCustServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListCustServlet</servlet-name>
+        <url-pattern>/servlet/ListCustServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CustInfoServlet</servlet-name>
+        <url-pattern>/servlet/CustInfoServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateCustServlet</servlet-name>
+        <url-pattern>/servlet/UpdateCustServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DelCustServlet</servlet-name>
+        <url-pattern>/servlet/DelCustServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BatchDelServlet</servlet-name>
+        <url-pattern>/servlet/BatchDelServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FindCustByCondServlet</servlet-name>
+        <url-pattern>/servlet/FindCustByCondServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PageCustServlet</servlet-name>
+        <url-pattern>/servlet/PageCustServlet</url-pattern>
+    </servlet-mapping>
+
+
+
+    <servlet>
+        <servlet-name>LoginServlet_forKick</servlet-name>
+        <servlet-class>com.xjlin.web.LoginServlet_forKick</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LogoutServlet_forKick</servlet-name>
+        <servlet-class>com.xjlin.web.LogoutServlet_forKick</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>KickServlet</servlet-name>
+        <servlet-class>com.xjlin.web.KickServlet</servlet-class>
+    </servlet>
+
+
+
+    <servlet-mapping>
+        <servlet-name>LoginServlet_forKick</servlet-name>
+        <url-pattern>/servlet/LoginServlet_forKick</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LogoutServlet_forKick</servlet-name>
+        <url-pattern>/servlet/LogoutServlet_forKick</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>KickServlet</servlet-name>
+        <url-pattern>/servlet/KickServlet</url-pattern>
+    </servlet-mapping>
+
+
+    <welcome-file-list>
+        <welcome-file>index_cus.jsp</welcome-file>
+    </welcome-file-list>
+</web-app>

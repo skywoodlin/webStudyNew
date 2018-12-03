@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taglib version="2.0" xmlns="http://java.sun.com/xml/ns/j2ee"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd">
+ <tlib-version>1.0</tlib-version>
+ <short-name>exec</short-name>
+ <uri>http://www.xjlin.com/exec</uri>
+ <tag>
+ 	<name>if</name>
+ 	<tag-class>com.xjlin.exec.IFTag</tag-class>
+	<body-content>scriptless</body-content>
+	<attribute>
+		<name>test</name>
+		<required>true</required>
+		<rtexprvalue>true</rtexprvalue>
+		<type>boolean</type>
+	</attribute>
+ </tag>
+ <tag>
+ 	<name>Tran</name>
+ 	<tag-class>com.xjlin.exec.TranHTML</tag-class>
+ 	<body-content>scriptless</body-content>
+ </tag>
+ <tag>
+ 	<name>ref</name>
+ 	<tag-class>com.xjlin.exec.RefTag</tag-class>
+ 	<body-content>empty</body-content>
+ </tag>
+</taglib>
